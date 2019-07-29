@@ -226,9 +226,9 @@ export default class FilterTasks extends Component {
       );
   }
   componentWillMount() {
-    this.reloadPage();
+    this.dispatchTasks();
   }
-  reloadPage() {
+  dispatchTasks() {
     const {
       title,
       assignee,
