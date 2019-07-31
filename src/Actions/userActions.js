@@ -27,7 +27,7 @@ export const userActions = {
   saveUser
 };
 
-export default function login(email, password) {
+export function login(email, password) {
   return dispatch => {
     var apiBaseUrl = "http://localhost:8000/api/users/";
     var payload = {
