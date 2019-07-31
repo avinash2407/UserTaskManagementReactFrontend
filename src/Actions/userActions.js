@@ -157,7 +157,7 @@ export function saveUser(userId, name) {
   };
 }
 export function createtask(title, description, assignee, due_date) {
-  var token = JSON.parse(localStorage.getItem("user"));
+  var token = Cookies.get("tokencookie");
   if (token !== undefined) {
     var payload = {
       title: title,

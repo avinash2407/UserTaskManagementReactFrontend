@@ -357,9 +357,7 @@ export default class FilterTasks extends Component {
               </div>
             </form>
           </div>
-          <div
-            className="col text-center"
-          >
+          <div className="col text-center">
             <button className="btn btn-primary" onClick={this.handleClear}>
               Reset Filter <i className="fa fa-refresh"></i>
             </button>
@@ -369,8 +367,8 @@ export default class FilterTasks extends Component {
               <h2>Navigate</h2>
               <input
                 type="number"
-                min = '1'
-                max = {tasklastpage}
+                min="1"
+                max={tasklastpage}
                 className="form-control"
                 name="currentPage"
                 value={currentPage}

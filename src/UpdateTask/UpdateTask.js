@@ -95,7 +95,7 @@ export default class UpdateTask extends Component {
                             className="control-label col-sm-2"
                             htmlFor="due_time"
                         >
-                            due_date
+                            due_time
                         </label>
                         <div style={{ padding: "0px 150px 0px 150px" }}>
                             <input
