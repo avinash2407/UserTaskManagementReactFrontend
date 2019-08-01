@@ -1,40 +1,40 @@
-import React, { Component } from 'react';
-import { Login } from '../Login/Login';
-import { ReduxLogin } from '../ReduxLogin/ReduxLogin';
-import { Signup } from '../Signup/Signup';
-import { ReduxSignUp } from '../ReduxSignUp/ReduxSignUp';
-import { connect } from 'react-redux';
-import { history } from '../BrowseHistory';
-import { Router, Route, Link } from 'react-router-dom';
-import { HomePage } from '../HomePage/HomePage';
-import CreateUser from '../CreateUser/CreateUser';
-import ForgotPassword from '../ForgotPassword/ForgotPassword';
-import ResetPassword from '../ResetPassword/ResetPassword';
-import { FilterUsers } from '../FilterUsers/FilterUsers';
-import { ValidateRoute } from '../ValidateRoute/ValidateRoute';
-import { FilterTasks } from '../FilterTasks/FilterTasks';
-import { UpdateTask } from '../UpdateTask/UpdateTask';
-import UserManagement from '../UserManagement/UserManagement';
-import AfterLoginNav from '../AfterLoginNav';
-import BeforeLoginNav from '../BeforeLoginNav';
-import { UpdateStatus } from '../UpdateStatus/UpdateStatus';
-import { CreateTask } from '../CreateTask/CreateTask';
-import Cookies from 'js-cookie';
-import '../App.css';
-import '../index.css';
+import React, { Component } from "react";
+import { Login } from "../Login/Login";
+import { ReduxLogin } from "../ReduxLogin/ReduxLogin";
+import { Signup } from "../Signup/Signup";
+import { ReduxSignUp } from "../ReduxSignUp/ReduxSignUp";
+import { connect } from "react-redux";
+import { history } from "../BrowseHistory";
+import { Router, Route, Link } from "react-router-dom";
+import { HomePage } from "../HomePage/HomePage";
+import CreateUser from "../CreateUser/CreateUser";
+import ForgotPassword from "../ForgotPassword/ForgotPassword";
+import ResetPassword from "../ResetPassword/ResetPassword";
+import { FilterUsers } from "../FilterUsers/FilterUsers";
+import { ValidateRoute } from "../ValidateRoute/ValidateRoute";
+import { FilterTasks } from "../FilterTasks/FilterTasks";
+import { UpdateTask } from "../UpdateTask/UpdateTask";
+import UserManagement from "../UserManagement/UserManagement";
+import AfterLoginNav from "../AfterLoginNav";
+import BeforeLoginNav from "../BeforeLoginNav";
+import { UpdateStatus } from "../UpdateStatus/UpdateStatus";
+import { CreateTask } from "../CreateTask/CreateTask";
+import Cookies from "js-cookie";
+import "../App.css";
+import "../index.css";
 
 export default class App extends Component {
   constructor(props) {
     super(props);
   }
   render() {
-    const {auth} = this.props;
+    const { auth } = this.props;
     return (
       <Router history={history}>
         <div className="jumbotron jumbotron-fluid" style={{ height: 1000 }}>
           <div className="container-fluid">
-            {(Cookies.get('tokencookie')===undefined) && <BeforeLoginNav />}
-            {(Cookies.get('tokencookie')!==undefined) && <AfterLoginNav />}
+            {Cookies.get("tokencookie") === undefined && <BeforeLoginNav />}
+            {Cookies.get("tokencookie") !== undefined && <AfterLoginNav />}
             <ValidateRoute exact path="/" component={HomePage} />
             <Route path="/login" component={Login} />
             <Route path="/rlogin" component={ReduxLogin} />
