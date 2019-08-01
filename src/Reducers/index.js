@@ -13,6 +13,7 @@ import { task } from './task';
 import { statustask } from './statustask';
 import { assigneeuser } from './assigneeuser';
 import { loader } from './loader';
+import { reducer as reduxFormReducer } from 'redux-form';
 
 export const baseReducer = combineReducers({
 	auth,
@@ -28,6 +29,7 @@ export const baseReducer = combineReducers({
 	task,
 	statustask,
 	assigneeuser,
-	loader
+	loader,
+	form : reduxFormReducer
 });
 export default baseReducer;

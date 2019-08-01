@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Login } from '../Login/Login';
+import { ReduxLogin } from '../ReduxLogin/ReduxLogin';
 import { Signup } from '../Signup/Signup';
+import { ReduxSignUp } from '../ReduxSignUp/ReduxSignUp';
 import { connect } from 'react-redux';
 import { history } from '../BrowseHistory';
 import { Router, Route, Link } from 'react-router-dom';
@@ -35,6 +37,8 @@ export default class App extends Component {
             {(Cookies.get('tokencookie')!==undefined) && <AfterLoginNav />}
             <ValidateRoute exact path="/" component={HomePage} />
             <Route path="/login" component={Login} />
+            <Route path="/rlogin" component={ReduxLogin} />
+            <Route path="/rsignup" component={ReduxSignUp} />
             <Route path="/signup" component={Signup} />
             <Route path="/forgotpassword" component={ForgotPassword} />
             <Route path="/resetpassword" component={ResetPassword} />
