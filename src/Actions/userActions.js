@@ -1,9 +1,11 @@
 import axios from "axios";
 import { history } from "../BrowseHistory";
 import Cookies from "js-cookie";
+import { SubmissionError } from "redux-form";
 
 export const userActions = {
   login,
+  reduxlogin,
   signup,
   logout,
   createuser,
@@ -34,7 +36,7 @@ export function login(email, password) {
       email: email,
       password: password
     };
-    axios
+    return axios
       .post(apiBaseUrl + "login", payload, { withCredentials: true })
       .then(function(response) {
         if (response.status === 200) {
@@ -48,11 +50,33 @@ export function login(email, password) {
         }
       })
       .catch(error => {
-        if (error.response.status === 400 || error.response.status === 401)
-          alert(error.response.data.error);
-        else {
+        if (error.response.status === 400 || error.response.status === 401) {
+         alert(error.response.data.error);
+        } else {
           alert(error.message);
           return false;
+        }
+      });
+  };
+}
+export function reduxlogin(email, password) {
+  return dispatch => {
+    var apiBaseUrl = "http://localhost:8000/api/users/";
+    var payload = {
+      email: email,
+      password: password
+    };
+    return axios
+      .post(apiBaseUrl + "login", payload, { withCredentials: true })
+      .then(function(response) {
+        if (response.status === 200) {
+          var user = {
+            token: Cookies.get("tokencookie")
+          };
+          dispatch({ type: "LoginSuccess", user });
+          history.push("/");
+        } else {
+          alert(response.data.error);
         }
       });
   };

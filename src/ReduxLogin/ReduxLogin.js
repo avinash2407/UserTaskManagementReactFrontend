@@ -11,7 +11,8 @@ import {
 import { userActions } from "../Actions";
 import BeforeLoginNav from "../BeforeLoginNav";
 import Cookies from "js-cookie";
-import FieldLevelValidationForm from "./FieldLevelValidationForm";
+import SubmitValidationForm from "./SubmitValidationForm";
+import { SubmissionError } from "redux-form";
 
 export default class ReduxLogin extends Component {
     constructor(props) {
@@ -20,13 +21,22 @@ export default class ReduxLogin extends Component {
     }
     loginSubmit(values) {
         const { dispatch } = this.props;
-        dispatch(userActions.login(values.email, values.password));
+        return dispatch(userActions.reduxlogin(values.email, values.password))
+            .then(response => {})
+            .catch(error => {
+                console.log(error.response);
+                var erobj = new SubmissionError({
+                    _error : 'Login Failed!'
+                });
+                console.log(erobj);
+                throw erobj;
+            });
     }
     render() {
         return (
             <div className="col text-center">
                 <h2> Redux-form Login Page</h2>
-                <FieldLevelValidationForm onSubmit={this.loginSubmit} />
+                <SubmitValidationForm onSubmit={this.loginSubmit} />
             </div>
         );
     }
